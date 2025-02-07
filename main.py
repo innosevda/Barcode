@@ -2,6 +2,7 @@ import os
 import shutil
 import subprocess
 
+from espeakng import ESpeakNG
 from fastapi import FastAPI, UploadFile, File
 from starlette.responses import StreamingResponse
 
@@ -31,14 +32,18 @@ class SDPAPP:
         audio_filename = "price_audio.wav"
         audio_path = os.path.join(self.audio_folder, audio_filename)
 
-        command = [
-            "espeak-ng",
-            "-v", "az",  # Set the language to Azerbaijani
-            "-w", audio_path,  # Output file path
-            text  # Text to convert to speech
-        ]
+        # command = [
+        #     "espeak-ng",
+        #     "-v", "az",  # Set the language to Azerbaijani
+        #     "-w", audio_path,  # Output file path
+        #     text  # Text to convert to speech
+        # ]
 
-        subprocess.run(command, check=True)  # Execute the command
+        # es = ESpeakNG()
+
+        # es.say(text)
+
+        # subprocess.run(command, check=True)  # Execute the command
 
         return audio_path
 
