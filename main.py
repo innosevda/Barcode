@@ -32,7 +32,7 @@ class SDPAPP:
         audio_path = os.path.join(self.audio_folder, audio_filename)
 
         command = [
-            ".\\eSpeak NG\\espeak-ng.exe",
+            "espeak-ng",
             "-v", "az",  # Set the language to Azerbaijani
             "-w", audio_path,  # Output file path
             text  # Text to convert to speech
