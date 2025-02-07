@@ -1,8 +1,8 @@
 import os
-from fastapi import FastAPI, UploadFile, File
 import shutil
 import subprocess
 
+from fastapi import FastAPI, UploadFile, File
 from starlette.responses import StreamingResponse
 
 app = FastAPI()
@@ -32,7 +32,7 @@ class SDPAPP:
         audio_path = os.path.join(self.audio_folder, audio_filename)
 
         command = [
-            "espeak-ng",
+            "eSpeak NG\\espeak-ng.exe",
             "-v", "az",  # Set the language to Azerbaijani
             "-w", audio_path,  # Output file path
             text  # Text to convert to speech
@@ -45,6 +45,9 @@ class SDPAPP:
 
 sdp_app = SDPAPP()
 
+@app.get("/")
+async def root():
+    return {"state": "running!"}
 
 @app.post("/image/")
 async def process_image(file: UploadFile = File(...)):
