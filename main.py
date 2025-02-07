@@ -66,9 +66,3 @@ def generate_audio():
     # Stream the audio file back to the mobile app
     return StreamingResponse(audio_file, media_type="audio/wav",
                              headers={"Content-Disposition": "attachment; filename=price_audio.wav"})
-
-
-if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run(app, host="0.0.0.0", port=8000)
